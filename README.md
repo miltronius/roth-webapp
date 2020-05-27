@@ -1,4 +1,6 @@
-# RothWebapp
+# miltonroth - Webapp 
+
+![Jekyll site CI](https://github.com/Miles07/roth-webapp/workflows/Jekyll%20site%20CI/badge.svg?branch=master)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
