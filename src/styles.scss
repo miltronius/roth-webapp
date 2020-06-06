@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* global styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 8px 0;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+p {
+  margin: 0;
+  font-size: 20px;
+}
+
+// -- Mobile --
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 10px;
+  }
+}
