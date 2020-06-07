@@ -1,3 +1,12 @@
+:host {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .img-responsive {
   width: 100%;
 }
@@ -21,26 +30,14 @@
   &--body {
     color: red;
     background: white;
-    background-color: white;
+    -webkit-box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.3);
   }
-}
 
-.content {
-  display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
-  flex-direction: column;
-  align-items: center;
-}
-
-svg.material-icons {
-  height: 24px;
-  width: auto;
-}
-
-svg.material-icons:not(:last-child) {
-  margin-right: 8px;
+  img {
+    margin: 0 16px;
+  }
 }
 
 .landing-page {
@@ -56,6 +53,27 @@ svg.material-icons:not(:last-child) {
     width: 40%;
     padding: 10px;
   }
+}
+
+.content {
+  display: flex;
+  margin: 0 auto 32px auto;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+
+  &__box {
+    margin-top: 5rem;
+  }
+}
+
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
 }
 
 .footer {

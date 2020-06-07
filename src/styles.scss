@@ -1,3 +1,32 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+/*@include mat-core();*/
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$roth-webapp-primary: mat-palette($mat-indigo);
+$roth-webapp-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$roth-webapp-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$roth-webapp-theme: mat-light-theme($roth-webapp-primary, $roth-webapp-accent, $roth-webapp-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($roth-webapp-theme);
+
 /* global styles */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
@@ -5,27 +34,61 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h4, h5, h6 {
   margin: 8px 0;
 }
 
 h1 {
+  margin: 8px 0;
   font-size: 60px;
 }
 
-p {
-  margin: 0;
+h2 {
+  margin: 16px 0;
+  font-size: 35px;
+}
+
+h3 {
+  margin: 16px 0;
   font-size: 20px;
 }
 
+p {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: circle;
+
+  li {
+    margin: 3px 0;
+    font-size: 20px;
+  }
+}
+
 // -- Mobile --
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   h1 {
     font-size: 30px;
   }
 
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+
   p {
     margin: 0;
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  ul li {
+    font-size: 12px;
   }
 }
+
+html, body { height: 100%; }
