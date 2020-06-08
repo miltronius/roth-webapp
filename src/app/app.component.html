@@ -10,14 +10,19 @@
 
     <!-- Welcome / Landing Page -->
     <div class="landing-page">
-        <img class="img-responsive" alt="milton at lake baikal in siberia"
-             srcset="assets/images/baikal_artsy_767px.jpg 767w,
-                     assets/images/baikal_moon_1000px.jpg 1000w,
-                     assets/images/baikal_moon_2000px.jpg 2000w"
-             sizes="(max-width: 800px) 767px,
-                    (max-width: 1500px) 1000px,
-                    2000px"
-             src="assets/images/baikal_moon_1000px.jpg">
+        <!-- Responsive Image: Better browser assistance instead with just the <img> tag -->
+        <picture>
+            <source media="(max-width: 800px)"
+                    srcset="assets/images/baikal_artsy_767px.jpg 767w"/>
+            <source media="(max-width: 1500px)"
+                    srcset="assets/images/baikal_moon_1000px.jpg 1000w"/>
+            <source media="(min-width: 1501px)"
+                    srcset="assets/images/baikal_moon_2000px.jpg 2000w"/>
+            <img class="img-responsive" alt="milton at lake baikal in siberia"
+                 src="assets/images/baikal_moon_1000px.jpg">
+        </picture>
+
+
         <div class="landing-page__greeting">
             <h1>Milton Roth</h1>
             <br/>
@@ -70,19 +75,19 @@
         <div class="container">
             <!-- GitHub -->
             <a id="github" class="circle-link" title="GitHub" href="https://github.com/Miles07"
-               target="_blank" rel="noopener">
+               target="_blank" rel="noopener noreferrer">
                 <fa-icon [icon]="faGithubIcon"></fa-icon>
             </a>
 
             <!-- LinkedIn -->
             <a id="linkedin" class="circle-link" title="LinkedIn" href="https://www.linkedin.com/in/miltonroth/"
-               target="_blank" rel="noopener">
+               target="_blank" rel="noopener noreferrer">
                 <fa-icon [icon]="faLinkedInIcon"></fa-icon>
             </a>
 
             <!-- Twitter -->
             <a id="twitter" class="circle-link" title="Twitter" href="https://twitter.com/ml_roth_"
-               target="_blank" rel="noopener">
+               target="_blank" rel="noopener noreferrer">
                 <fa-icon [icon]="faTwitterIcon"></fa-icon>
             </a>
 
