@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
     selector: 'app-root',
@@ -6,25 +7,13 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, On
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
     public title = 'roth-webapp';
     public counter: number = 0;
     public isTop: boolean = true;
-
-    constructor(private cdr: ChangeDetectorRef) {
-    }
-
-    ngOnInit(): void {
-    }
-
-    public countUp(event: Event) {
-        console.log(JSON.stringify(event));
-        this.counter++;
-        this.cdr.markForCheck();
-    }
-
-    ngOnDestroy(): void {
-    }
+    public faGithubIcon = faGithub;
+    public faTwitterIcon = faTwitter;
+    public faLinkedInIcon = faLinkedinIn;
 
     @HostListener('window:scroll', [])
     onWindowScroll() {

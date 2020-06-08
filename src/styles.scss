@@ -30,6 +30,9 @@ $roth-webapp-theme: mat-light-theme($roth-webapp-primary, $roth-webapp-accent, $
 /* global styles */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+/* Material Icons */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 body {
   margin: 0;
 }
@@ -67,6 +70,10 @@ ul {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 // -- Mobile --
 @media screen and (max-width: 767px) {
   h1 {
@@ -75,6 +82,7 @@ ul {
 
   h2 {
     font-size: 20px;
+    text-align: center;
   }
 
   h3 {
