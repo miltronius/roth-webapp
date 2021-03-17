@@ -51,6 +51,12 @@
     width: 40%;
     padding: 10px;
   }
+
+  .baikal-text {
+    position: absolute;
+    right: 5px;
+    margin-top: 58%;
+  }
 }
 
 .content {
@@ -118,7 +124,7 @@ footer a {
 .circle-link:hover {
   background-color: white;
   -webkit-transform: scale(1.3) rotate(360deg);
-  transform: scale(1.3)rotate(360deg);
+  transform: scale(1.3) rotate(360deg);
 
   &#github {
     color: #6e5494;
@@ -171,3 +177,8 @@ footer a {
   }
 }
 
+@media (max-width: 800px) {
+  .no-mobile {
+    display: none;
+  }
+}
