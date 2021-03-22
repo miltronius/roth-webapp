@@ -33,81 +33,90 @@ $roth-webapp-theme: mat-light-theme($roth-webapp-primary, $roth-webapp-accent, $
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 h4, h5, h6 {
-  margin: 8px 0;
+    margin: 8px 0;
 }
 
 h1 {
-  margin: 8px 0;
-  font-size: 60px;
+    margin: 8px 0;
+    font-size: 60px;
 }
 
 h2 {
-  margin: 16px 0;
-  font-size: 35px;
+    margin: 16px 0;
+    font-size: 35px;
 }
 
 h3 {
-  margin: 16px 0;
-  font-size: 20px;
+    margin: 16px 0;
+    font-size: 20px;
 }
 
 p {
-  margin: 8px 0;
-  font-size: 20px;
+    margin: 8px 0;
+    font-size: 20px;
 }
 
 .smol-text {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 ul {
-  list-style-type: circle;
+    list-style-type: circle;
 
-  li {
-    margin: 3px 0;
-    font-size: 20px;
-  }
+    li {
+        margin: 3px 0;
+        font-size: 20px;
+    }
 }
 
 a {
-  text-decoration: none;
-  color: #333;
+    text-decoration: none;
+    color: #333;
 }
 
 a:visited {
-  text-decoration: none;
-  color: #333;
+    text-decoration: none;
+    color: #333;
+}
+
+a.link--white, link--white:visited {
+    color: white;
+    transition: .5s;
+}
+
+a:hover {
+    color: #222;
 }
 
 // -- Mobile --
 @media screen and (max-width: 767px) {
-  h1 {
-    font-size: 30px;
-  }
+    h1 {
+        font-size: 30px;
+    }
 
-  h2 {
-    font-size: 20px;
-    text-align: center;
-  }
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
 
-  h3 {
-    font-size: 12px;
-  }
+    h3 {
+        font-size: 12px;
+    }
 
-  p {
-    margin: 0;
-    font-size: 12px;
-  }
+    p {
+        margin: 0;
+        font-size: 12px;
+    }
 
-  ul li {
-    font-size: 12px;
-  }
+    ul li {
+        font-size: 12px;
+    }
 }
 
 html, body {
-  height: 100%;
+    height: 100%;
 }
