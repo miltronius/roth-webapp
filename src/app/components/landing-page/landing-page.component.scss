@@ -1,0 +1,68 @@
+.landing-page {
+    margin-top: -60px;
+    position: relative;
+
+    &__greeting {
+        position: absolute;
+        color: white;
+        top: 30%;
+        left: 50%;
+        margin: auto;
+        width: 40%;
+        padding: 10px;
+    }
+
+    .baikal-text {
+        position: absolute;
+        right: 5px;
+        margin-top: 58%;
+    }
+}
+
+.content {
+    display: flex;
+    margin: 0 auto 32px auto;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+
+    &__box {
+        margin-top: 5rem;
+    }
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+/* Mobile - Responsive style */
+@media screen and (max-width: 800px) {
+    .toolbar {
+        height: 40px;
+
+        img {
+            margin: 0 8px;
+        }
+    }
+
+    .landing-page {
+        &__greeting {
+            position: absolute;
+            color: white;
+            top: 40%;
+            left: 50%;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .no-mobile {
+        display: none;
+    }
+}

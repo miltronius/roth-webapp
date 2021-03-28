@@ -1,0 +1,64 @@
+<!-- Welcome / Landing Page -->
+<div class="landing-page">
+    <!-- Responsive Image: Better browser assistance instead with just the <img> tag -->
+    <picture>
+        <source media="(max-width: 800px)"
+                srcset="assets/images/baikal_artsy_767px.jpg 767w"/>
+        <source media="(max-width: 1500px)"
+                srcset="assets/images/baikal_moon_1000px.jpg 1000w"/>
+        <source media="(min-width: 1501px)"
+                srcset="assets/images/baikal_moon_2000px.jpg 2000w"/>
+        <img class="img-responsive" alt="milton at lake baikal in siberia"
+             src="assets/images/baikal_moon_1000px.jpg" width="1000" height="auto">
+    </picture>
+
+
+    <div class="landing-page__greeting">
+        <h1>Milton Roth</h1>
+        <br/>
+        <p>
+            <a class="link--white" href="https://www.youtube.com/watch?v=Vhh_GeBPOhs" target="_blank"
+               rel="noopener noreferrer">Developer</a> from Zurich, Switzerland
+        </p>
+    </div>
+    <a href="https://www.openstreetmap.org/relation/4171900" class="baikal-text smol-text no-mobile"
+       target="_blank" rel="noopener noreferrer">
+        Me at Lake Baikal in Listvyanka (Siberia), Russia
+    </a>
+</div>
+
+<!-- Content -->
+<div class="content" role="main">
+    <div class="content__box">
+        <!-- Resources -->
+        <h2>About me</h2>
+        <p>I'm Milton - Student and software developer.</p>
+        <h3>Likes</h3>
+        <ul>
+            <li>Food</li>
+            <li>Sports: Ice Hockey, Running, Fitness</li>
+            <li>Movies</li>
+            <li>Travel</li>
+            <li>Music</li>
+            <li>Games</li>
+        </ul>
+    </div>
+
+    <div class="content__box">
+        <h2>Tech Stack</h2>
+        <h3>Languages & Frameworks</h3>
+        <ul>
+            <li>Angular, JavaScript, TypeScript, HTML, CSS</li>
+            <li>Java, Spring Boot, Apache Camel</li>
+            <li>Python, Flask</li>
+            <li>C#</li>
+        </ul>
+        <h3>Other Technologies</h3>
+        <ul>
+            <li>Git</li>
+            <li>Gradle, Maven</li>
+            <li>Jenkins</li>
+            <li>Unity, UE4</li>
+        </ul>
+    </div>
+</div>

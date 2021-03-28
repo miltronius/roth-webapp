@@ -83,7 +83,7 @@ a:visited {
     color: #333;
 }
 
-a.link--white, link--white:visited {
+a.link--white, a.link--white:visited {
     color: white;
     transition: .5s;
 }
@@ -110,6 +110,13 @@ a:hover {
 }
 
 html, body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
     height: 100%;
     scrollbar-color: white #545454;
 }
@@ -126,6 +133,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: white;
 }
+
 body::-webkit-scrollbar-thumb:hover {
     background-color: lightgrey;
 }
