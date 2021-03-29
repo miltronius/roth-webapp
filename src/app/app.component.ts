@@ -21,10 +21,5 @@ export class AppComponent {
     @HostListener('window:scroll', [])
     onWindowScroll() {
         this.isTop = window.scrollY === 0;
-
-        if (!environment.production && this.isTop) {
-            this.flaskService.postRequest();
-            this.flaskService.getRequest();
-        }
     }
 }

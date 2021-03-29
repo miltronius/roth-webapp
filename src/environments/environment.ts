@@ -2,11 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const endpoints = {
+     flask_heroku: 'http://localhost:5000/',
+    // flask_heroku: 'https://roth-flask-app.herokuapp.com/'
+};
+
 export const environment = {
     production: false,
-    endpoints: {
-        flask_heroku: 'http://localhost:5000/'
-    }
+    endpoints
 };
 
 /*

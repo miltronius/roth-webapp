@@ -13,8 +13,12 @@ import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {LandingPageComponent} from './components/landing-page/landing-page.component';
 import {NotFound404Component} from './error-pages/not-found-404/not-found-404.component';
-import {SandboxComponent} from './sandbox/sandbox.component';
+import {SandboxComponent} from './components/sandbox/sandbox.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -33,7 +37,12 @@ import {MatTableModule} from '@angular/material/table';
         MatIconModule,
         HttpClientModule,
         FontAwesomeModule,
-        MatTableModule
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

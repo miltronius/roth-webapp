@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {FlaskSongDictJson} from '../interfaces/song';
+import {FlaskSongDictJson, Song} from '../interfaces/song';
 
 @Injectable({
     providedIn: 'root'
@@ -14,18 +14,19 @@ export class FlaskService {
     constructor(private http: HttpClient) {
     }
 
-
     getSongList(): Observable<FlaskSongDictJson> {
         return this.http.get<FlaskSongDictJson>(this.FLASK_HOST + 'getMusicDict');
     }
 
     // TODO ADD SONG
-    addSong(): Observable<boolean> {
-        return this.http.get<boolean>(this.FLASK_HOST + 'addSong');
+    addSong(song: Song): Observable<boolean> {
+        console.log('>>> SONG:', song);
+        return this.http.post<boolean>(this.FLASK_HOST + 'addSong', song);
     }
 
     // TODO UPDATE SONG
-    updateSong(): Observable<boolean> {
+    updateSong(song: Song): Observable<boolean> {
+        console.log('>>> UPDATE SONG:', song);
         return this.http.post<boolean>(this.FLASK_HOST + 'updateSong', {});
     }
 

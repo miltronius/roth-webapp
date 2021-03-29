@@ -1,0 +1,77 @@
+<div class="sandbox"><h2>Sandbox Page</h2>
+
+    <button mat-raised-button color="primary" (click)="addSong()">Add Song</button>
+
+    <form class="selected-song" *ngIf="addingNewSong" #addSong="ngForm" [formGroup]="songForm" (ngSubmit)="addSongFormSubmit(addSong.value)">
+        Add new song
+        <br><br>
+
+        <mat-form-field class="example-full-width">
+            <label>Song name</label>
+            <input type="text" matInput required formControlName="songName"/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <label>Artist</label>
+            <input matInput required formControlName="artist"/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <label>Album</label>
+            <input matInput formControlName="album"/>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary">Add Song</button>
+    </form>
+
+    <form class="selected-song" *ngIf="selectedSong">
+        {{selectedSong.song}} selected!
+        <br><br>
+
+        <mat-form-field class="example-full-width">
+            <label>Song name</label>
+            <input type="text" matInput value="{{selectedSong.song}}" required/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <label>Artist</label>
+            <input matInput value="{{selectedSong.artist}}" required/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <label>Album</label>
+            <input matInput value="{{selectedSong.album}}"/>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary"
+                (click)="updateSong()">Update Song Details
+        </button>
+    </form>
+
+
+    <mat-table [dataSource]="songs">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="songName">
+            <mat-header-cell *matHeaderCellDef> Song Name</mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.song}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="artist">
+            <mat-header-cell *matHeaderCellDef> Artist</mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.artist}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="album">
+            <mat-header-cell *matHeaderCellDef> Album</mat-header-cell>
+            <mat-cell *matCellDef="let song"> {{song.album}} </mat-cell>
+        </ng-container>
+
+        <!-- Header and Row Declarations -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectRow(row)"></mat-row>
+    </mat-table>
+</div>
