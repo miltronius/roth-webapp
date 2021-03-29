@@ -19,9 +19,9 @@ export class FlaskService {
     }
 
     // TODO ADD SONG
-    addSong(song: Song): Observable<boolean> {
+    addSong(song: Song): Observable<string> {
         console.log('>>> SONG:', song);
-        return this.http.post<boolean>(this.FLASK_HOST + 'addSong', song);
+        return this.http.post<string>(this.FLASK_HOST + 'addSong', song);
     }
 
     // TODO UPDATE SONG

@@ -52,9 +52,9 @@ export class SandboxComponent implements OnInit {
         this.addingNewSong = true;
     }
 
-    addSongFormSubmit(value: any) {
+    addSongFormSubmit(value: Song) {
         console.log('ADDSONG_SUBMIT:', value);
-        this.flaskService.addSong(this.selectedSong).subscribe(val => {
+        this.flaskService.addSong(value).subscribe(val => {
                 // this.songs.
             }, error => {
                 console.log('');
