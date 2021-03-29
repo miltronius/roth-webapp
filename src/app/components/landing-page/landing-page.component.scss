@@ -61,6 +61,14 @@
     }
 }
 
+.black-box {
+    position: absolute;
+    padding: 10px;
+    right: 10px;
+    margin-top: -40px;
+    background-color: black;
+}
+
 @media (max-width: 800px) {
     .no-mobile {
         display: none;

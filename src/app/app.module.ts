@@ -12,13 +12,17 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { NotFound404Component } from './error-pages/not-found-404/not-found-404.component';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavBarComponent,
         FooterComponent,
-        LandingPageComponent
+        LandingPageComponent,
+        NotFound404Component,
+        SandboxComponent
     ],
     imports: [
         BrowserModule,
