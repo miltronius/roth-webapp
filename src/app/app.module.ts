@@ -11,9 +11,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { NotFound404Component } from './error-pages/not-found-404/not-found-404.component';
-import { SandboxComponent } from './sandbox/sandbox.component';
+import {LandingPageComponent} from './components/landing-page/landing-page.component';
+import {NotFound404Component} from './error-pages/not-found-404/not-found-404.component';
+import {SandboxComponent} from './sandbox/sandbox.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { SandboxComponent } from './sandbox/sandbox.component';
         BrowserAnimationsModule,
         MatIconModule,
         HttpClientModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        MatTableModule
     ],
     providers: [],
     bootstrap: [AppComponent]
