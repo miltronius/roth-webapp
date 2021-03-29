@@ -30,3 +30,20 @@ label {
 mat-form-field {
     margin: 10px;
 }
+
+.close-window {
+    position: absolute;
+    margin-left: 480px;
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 1px solid black;
+    margin-top: -10px;
+    border-radius: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-window:hover {
+    background-color: black;
+    color: white;
+}

@@ -2,13 +2,15 @@
 
     <button mat-raised-button color="primary" (click)="addSong()">Add Song</button>
 
-    <form class="selected-song" *ngIf="addingNewSong" #addSong="ngForm" [formGroup]="songForm" (ngSubmit)="addSongFormSubmit(addSong.value)">
+    <form class="selected-song" *ngIf="addingNewSong" #addSong="ngForm" [formGroup]="songForm"
+          (ngSubmit)="addSongFormSubmit(addSong.value)">
         Add new song
+        <div class="close-window" (click)="removeForm()">X</div>
         <br><br>
 
         <mat-form-field class="example-full-width">
             <label>Song name</label>
-            <input type="text" matInput required formControlName="songName"/>
+            <input type="text" matInput required formControlName="song"/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -26,6 +28,7 @@
 
     <form class="selected-song" *ngIf="selectedSong">
         {{selectedSong.song}} selected!
+        <div class="close-window" (click)="removeForm()">X</div>
         <br><br>
 
         <mat-form-field class="example-full-width">
@@ -55,7 +58,7 @@
             <mat-cell *matCellDef="let song"> {{song.id}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="songName">
+        <ng-container matColumnDef="song">
             <mat-header-cell *matHeaderCellDef> Song Name</mat-header-cell>
             <mat-cell *matCellDef="let song"> {{song.song}} </mat-cell>
         </ng-container>

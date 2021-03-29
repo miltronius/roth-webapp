@@ -1,27 +1,23 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Song} from '../../interfaces/song';
 import {FlaskService} from '../../services/flask.service';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-sandbox',
     templateUrl: './sandbox.component.html',
-    styleUrls: ['./sandbox.component.scss']
+    styleUrls: ['./sandbox.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SandboxComponent implements OnInit {
 
     songs: Song[];
     selectedSong: Song;
-    displayedColumns: string[] = ['id', 'songName', 'artist', 'album']; // mat-table columns
+    displayedColumns: string[] = ['id', 'song', 'artist', 'album']; // mat-table columns
     errorMessage: string;
     flaskServiceLoading: boolean = true;
     addingNewSong: boolean = false;
-
-    songForm = this.formBuilder.group({
-        songName: '',
-        artist: '',
-        album: ''
-    });
+    songForm: FormGroup;
 
     constructor(
         private flaskService: FlaskService,
@@ -42,27 +38,39 @@ export class SandboxComponent implements OnInit {
         });
     }
 
+    removeForm(): void {
+        this.selectedSong = undefined;
+        this.addingNewSong = false;
+    }
+
     selectRow(row: Song): void {
         this.selectedSong = row;
         this.addingNewSong = false;
     }
 
-    addSong() {
+    addSong(): void {
         this.selectedSong = undefined;
         this.addingNewSong = true;
+        this.songForm = this.formBuilder.group({
+            song: '',
+            artist: '',
+            album: ''
+        });
     }
 
-    addSongFormSubmit(value: Song) {
-        console.log('ADDSONG_SUBMIT:', value);
-        this.flaskService.addSong(value).subscribe(val => {
-                // this.songs.
+    addSongFormSubmit(value: Song): void {
+        this.flaskService.addSong(value).subscribe(response => {
+                this.songs = [...this.songs, value];
+                this.removeForm();
+                this.changeDetectorRef.detectChanges();
             }, error => {
-                console.log('');
+                console.log('error', error);
+                this.errorMessage = JSON.stringify(error); // TODO read proper error msg
             }
         );
     }
 
-    updateSong() {
+    updateSong(): void {
         this.flaskService.updateSong(this.selectedSong).subscribe(value => {
                 // this.songs.
             }, error => {
