@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Song} from '../../interfaces/song';
+import {AddSongResponseJson, Song} from '../../interfaces/song';
 import {FlaskService} from '../../services/flask.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -28,7 +28,6 @@ export class SandboxComponent implements OnInit {
 
     ngOnInit(): void {
         this.flaskService.getSongList().subscribe(json => {
-            console.log('JSON RESPONSE (songlist):', json);
             this.songs = json?.songs;
             this.flaskServiceLoading = false;
             this.changeDetectorRef.detectChanges();
@@ -48,7 +47,7 @@ export class SandboxComponent implements OnInit {
         this.addingNewSong = false;
     }
 
-    addSong(): void {
+    createAddSongForm(): void {
         this.selectedSong = undefined;
         this.addingNewSong = true;
         this.songForm = this.formBuilder.group({
@@ -59,7 +58,8 @@ export class SandboxComponent implements OnInit {
     }
 
     addSongFormSubmit(value: Song): void {
-        this.flaskService.addSong(value).subscribe(response => {
+        this.flaskService.addSong(value).subscribe((response: AddSongResponseJson) => {
+                value.id = response.id;
                 this.songs = [...this.songs, value];
                 this.removeForm();
                 this.changeDetectorRef.detectChanges();
@@ -70,6 +70,7 @@ export class SandboxComponent implements OnInit {
         );
     }
 
+    // TODO
     updateSong(): void {
         this.flaskService.updateSong(this.selectedSong).subscribe(value => {
                 // this.songs.

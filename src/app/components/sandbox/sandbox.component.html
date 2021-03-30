@@ -1,6 +1,6 @@
 <div class="sandbox"><h2>Sandbox Page</h2>
 
-    <button mat-raised-button color="primary" (click)="addSong()">Add Song</button>
+    <button mat-raised-button color="primary" (click)="createAddSongForm()" *ngIf="!addingNewSong">Add Song</button>
 
     <form class="selected-song" *ngIf="addingNewSong" #addSong="ngForm" [formGroup]="songForm"
           (ngSubmit)="addSongFormSubmit(addSong.value)">

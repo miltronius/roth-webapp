@@ -8,3 +8,9 @@ export interface Song {
 export interface FlaskSongDictJson {
     songs: Song[];
 }
+
+export interface AddSongResponseJson {
+    message: string;
+    id: number;
+}
+
