@@ -10,7 +10,6 @@ import {AddSongResponseJson, FlaskSongDictJson, Song} from '../interfaces/song';
 export class FlaskService {
 
     private readonly FLASK_HOST: string = environment.endpoints.flask_heroku;
-    private headers: Headers = new Headers();
 
     constructor(private http: HttpClient) {
     }
@@ -23,11 +22,12 @@ export class FlaskService {
         return this.http.post<AddSongResponseJson>(this.FLASK_HOST + 'addSong', song);
     }
 
-    // TODO UPDATE SONG
     updateSong(song: Song): Observable<boolean> {
-        console.log('>>> UPDATE SONG:', song);
-        this.headers.append('Content-Type', 'application/json');
-        return this.http.post<boolean>(this.FLASK_HOST + 'updateSong', {headers: this.headers});
+        return this.http.post<boolean>(this.FLASK_HOST + 'updateSong', song);
+    }
+
+    deleteSong(song: Song): Observable<boolean> {
+        return this.http.post<boolean>(this.FLASK_HOST + 'deleteSong', song);
     }
 
     getRequest() {

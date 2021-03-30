@@ -13,7 +13,7 @@ export class SandboxComponent implements OnInit {
 
     songs: Song[];
     selectedSong: Song;
-    displayedColumns: string[] = ['id', 'song', 'artist', 'album']; // mat-table columns
+    displayedColumns: string[] = ['song', 'artist', 'album', 'delete']; // mat-table columns
     errorMessage: string;
     flaskServiceLoading: boolean = true;
     addingNewSong: boolean = false;
@@ -45,6 +45,13 @@ export class SandboxComponent implements OnInit {
     selectRow(row: Song): void {
         this.selectedSong = row;
         this.addingNewSong = false;
+        this.songForm = this.formBuilder.group({
+            id: row.id,
+            song: row.song,
+            artist: row.artist,
+            album: row.album
+        });
+
     }
 
     createAddSongForm(): void {
@@ -57,25 +64,38 @@ export class SandboxComponent implements OnInit {
         });
     }
 
-    addSongFormSubmit(value: Song): void {
-        this.flaskService.addSong(value).subscribe((response: AddSongResponseJson) => {
-                value.id = response.id;
-                this.songs = [...this.songs, value];
+    addSongFormSubmit(newSong: Song): void {
+        this.flaskService.addSong(newSong).subscribe((response: AddSongResponseJson) => {
+                newSong.id = response.id;
+                this.songs = [...this.songs, newSong];
                 this.removeForm();
                 this.changeDetectorRef.detectChanges();
             }, error => {
-                console.log('error', error);
+                console.log('error in add song:', error);
                 this.errorMessage = JSON.stringify(error); // TODO read proper error msg
             }
         );
     }
 
-    // TODO
-    updateSong(): void {
-        this.flaskService.updateSong(this.selectedSong).subscribe(value => {
-                // this.songs.
+    updateSongFormSubmit(updatedSong: Song): void {
+        this.flaskService.updateSong(updatedSong).subscribe(val => {
+                this.songs = this.songs.map(oldSong => oldSong.id === updatedSong.id ? updatedSong : oldSong);
+                this.removeForm();
+                this.changeDetectorRef.detectChanges();
             }, error => {
-                console.log('');
+                console.log('error in update:', error);
+            }
+        );
+    }
+
+    deleteSong(songToBeDeleted: Song, event: Event): void {
+        event.stopPropagation();
+        this.flaskService.deleteSong(songToBeDeleted).subscribe(val => {
+                this.songs = this.songs.filter(song => song.id !== songToBeDeleted.id);
+                this.removeForm();
+                this.changeDetectorRef.detectChanges();
+            }, error => {
+                console.log('error in delete:', error);
             }
         );
     }

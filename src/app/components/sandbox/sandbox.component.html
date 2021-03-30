@@ -10,67 +10,68 @@
 
         <mat-form-field class="example-full-width">
             <label>Song name</label>
-            <input type="text" matInput required formControlName="song"/>
+            <input type="text" matInput required formControlName="song" required/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <label>Artist</label>
-            <input matInput required formControlName="artist"/>
+            <input type="text" matInput required formControlName="artist" required/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <label>Album</label>
-            <input matInput formControlName="album"/>
+            <input type="text" matInput formControlName="album"/>
         </mat-form-field>
 
         <button type="submit" mat-raised-button color="primary">Add Song</button>
     </form>
 
-    <form class="selected-song" *ngIf="selectedSong">
+    <form class="selected-song" *ngIf="selectedSong" #updateSong="ngForm" [formGroup]="songForm"
+          (ngSubmit)="updateSongFormSubmit(updateSong.value)">
         {{selectedSong.song}} selected!
         <div class="close-window" (click)="removeForm()">X</div>
         <br><br>
 
         <mat-form-field class="example-full-width">
             <label>Song name</label>
-            <input type="text" matInput value="{{selectedSong.song}}" required/>
+            <input type="text" matInput value="{{selectedSong.song}}" formControlName="song" required/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <label>Artist</label>
-            <input matInput value="{{selectedSong.artist}}" required/>
+            <input matInput value="{{selectedSong.artist}}" formControlName="artist" required/>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <label>Album</label>
-            <input matInput value="{{selectedSong.album}}"/>
+            <input matInput value="{{selectedSong.album}}" formControlName="album"/>
         </mat-form-field>
 
-        <button mat-raised-button color="primary"
-                (click)="updateSong()">Update Song Details
-        </button>
+        <button mat-raised-button color="primary">Update Song Details</button>
     </form>
 
 
     <mat-table [dataSource]="songs">
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
-            <mat-cell *matCellDef="let song"> {{song.id}} </mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="song">
-            <mat-header-cell *matHeaderCellDef> Song Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Song Name</mat-header-cell>
             <mat-cell *matCellDef="let song"> {{song.song}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="artist">
-            <mat-header-cell *matHeaderCellDef> Artist</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Artist</mat-header-cell>
             <mat-cell *matCellDef="let song"> {{song.artist}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="album">
-            <mat-header-cell *matHeaderCellDef> Album</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Album</mat-header-cell>
             <mat-cell *matCellDef="let song"> {{song.album}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <mat-header-cell class="cell-header--delete" *matHeaderCellDef>Delete</mat-header-cell>
+            <mat-cell class="cell--delete" *matCellDef="let song">
+                <p class="p--delete" (click)="deleteSong(song, $event)">X</p>
+            </mat-cell>
         </ng-container>
 
         <!-- Header and Row Declarations -->
